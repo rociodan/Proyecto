@@ -1,0 +1,80 @@
+﻿@using prueba.proyecto.Models
+@model IEnumerable<Book>
+
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+@{
+    AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
+}
+<div class="text-right">
+    @Html.ActionLink("Agregar", "Agregar")
+</div>
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <thead>
+            <tr>Buscar Libro</tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input name="FiltroTitulo" type="text" class="form-control" />
+                </td>
+                <td>
+                    <select class="form-control" name="FiltroGenero">
+                        <option>Seleccione un genero...</option>
+                        @foreach (Gender gender in db.Gender.ToList())
+                        {
+                            <option value="@gender.Id">@gender.TitleGender</option>
+                        }
+                    </select>
+                </td>
+                <td> </td>
+                <td> </td>
+                <td class="text-right">
+                    <button class="glyphicon glyphicon-search btn btn-primary"></button>
+                </td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Genero</th>
+                <th>Editorial</th>
+                <th></th>
+            </tr>
+            @foreach (Book libro in this.Model)
+            {
+                <tr>
+                    <td>@libro.Title</td>
+                    <td>
+                        @foreach (Author author in libro.Author)
+                        {
+                            <div>@author.AuthorName</div>
+                        }
+                    </td>
+
+                    <td>
+                        @foreach (Gender gender in libro.Gender)
+                        {
+                            <div>@gender.TitleGender</div>
+                        }
+                    </td>
+                    <td>
+                        @foreach (Publisher publisher in libro.Publisher)
+                        {
+                            <div>@publisher.TitlePublisher</div>
+                        }
+                    </td>
+                    <td class="text-right">
+                        @Html.ActionLink("Editar", "Editar", new { Id = libro.Id })
+                        @Html.ActionLink("Eliminar", "Eliminar", new { Id = libro.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,47 @@
+﻿@using prueba.proyecto.Models
+
+
+@{
+    ViewBag.Title = "Agregar";
+}
+
+@{
+    AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
+    List<Author> autores = db.Author.OrderBy(au => au.AuthorName).ToList();
+    List<Gender> generos = db.Gender.OrderBy(ge => ge.TitleGender).ToList();
+}
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            <label>Titulo</label>
+            <input type="text" name="Title" value=" " placeholder="Ingrese el nombre del libro" class="form-control" />
+            <label>Autor</label>
+            <select name="autores" class="form-control">
+                <option>Seleccione un Autor...</option>
+                @foreach (Author autor in autores)
+                {
+                    <option value="@autor.Id">@autor.AuthorName</option>
+                }
+            </select>
+            <input type="text" name="AuthorName" value=" " placeholder="Nuevo Autor" class="form-control" />
+
+            <label>Genero</label>
+            <div id="generos">
+                <select name="generos" class="form-control">
+                    <option>Seleccione un Genero...</option>
+                    @foreach (Gender genero in generos)
+                    {
+                        <option value="@genero.Id">@genero.TitleGender</option>
+                    }
+                </select>
+            </div>
+
+            <label>Editorial</label>
+            <input type="text" name="TitlePublisher" value=" " placeholder="Ingrese la Editorial" class="form-control" />
+
+            <button class="btn btn-primary form-control" style="margin-top:1em">
+                Agregar
+            </button>
+
+        }
+    </div>

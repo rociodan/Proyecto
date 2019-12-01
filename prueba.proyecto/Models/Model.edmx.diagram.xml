@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08d3fe00a7c547a583f85831b524a524" Name="Diagram1">
+        <EntityTypeShape EntityType="AccentureAcademyBookStoreModel.Author" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="AccentureAcademyBookStoreModel.Book" Width="1.5" PointX="3" PointY="2" />
+        <EntityTypeShape EntityType="AccentureAcademyBookStoreModel.Gender" Width="1.5" PointX="5.25" PointY="3.375" />
+        <EntityTypeShape EntityType="AccentureAcademyBookStoreModel.Publisher" Width="1.5" PointX="5.25" PointY="1" />
+        <AssociationConnector Association="AccentureAcademyBookStoreModel.GenderBy" />
+        <AssociationConnector Association="AccentureAcademyBookStoreModel.PublisherBy" />
+        <AssociationConnector Association="AccentureAcademyBookStoreModel.WritenBy" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
