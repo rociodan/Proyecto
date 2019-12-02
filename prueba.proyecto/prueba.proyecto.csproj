@@ -222,6 +222,7 @@
     <Content Include="Views\libro\Editar.cshtml" />
     <Content Include="Views\libro\Listar.cshtml" />
     <Content Include="Views\libro\Author.cshtml" />
+    <Content Include="Views\libro\Publisher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

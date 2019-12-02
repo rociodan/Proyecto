@@ -142,5 +142,22 @@ namespace prueba.proyecto.Controllers
             return Content("Autor Agregado satisfactoriamente");
         }
 
+        public ActionResult Publisher()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Publisher(Publisher publish)
+        {
+            AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
+
+            db.Publisher.Add(publish);
+            db.SaveChanges();
+            return Content("Editorial Agregada satisfactoriamente");
+        }
+
     }
 }
