@@ -8,14 +8,12 @@
 
 @{
     AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
-    List<Author> autores = db.Author.OrderBy(au => au.AuthorName).ToList();
+    //List<Author> autores = db.Author.OrderBy(au => au.AuthorName).ToList();
     List<Gender> generos = db.Gender.OrderBy(ge => ge.TitleGender).ToList();
-    List<Publisher> publisher = db.Publisher.OrderBy(pu => pu.TitlePublisher).ToList();
-
+    //List<Publisher> publisher = db.Publisher.OrderBy(pu => pu.TitlePublisher).ToList();
+    
 
 }
-
-
 
 
 <div>
@@ -25,13 +23,13 @@
 
 <div>
     <label for="AuthorName">Autor</label>
-    <input type="text" id="AuthorName" class="form-control" name="AuthorName" value="@this.Model.Author" />
+    <input type="text" id="AuthorName" class="form-control" name="autores" value="@this.Model.Author.FirstOrDefault().AuthorName"/>
 </div>
 
 
 <div>
     <label for="TitleGender">Genero</label>
-    <select id="TitleGender" class="form-control" name="Gender_Id" value="@this.Model.Gender">
+    <select id="TitleGender" class="form-control" name="generos" value="@this.Model.Gender.FirstOrDefault().TitleGender">
         <option>Selecciona un Genero...</option>
 
         @foreach (Gender ge in generos)
@@ -43,6 +41,11 @@
         }
     </select>
         
+</div>
+
+<div>
+    <label for="TitlePublisher">Autor</label>
+    <input type="text" id="TitlePublisher" class="form-control" name="publisher" value="@this.Model.Publisher.FirstOrDefault().TitlePublisher" />
 </div>
 
 

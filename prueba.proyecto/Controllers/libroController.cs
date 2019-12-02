@@ -70,14 +70,14 @@ namespace prueba.proyecto.Controllers
 
             
 
-            //libro.Author.Clear();
+            libro.Gender.Clear();
 
 
-            /*foreach (int autorActual in autores)
+            foreach (int generoActual in generos)
             {
-                Author escritoPor = db.Author.Find(autorActual);
-                libro.Author.Add(escritoPor);
-            }*/
+                Gender escritoPor = db.Gender.Find(generoActual);
+                libro.Gender.Add(escritoPor);
+            }
 
             db.SaveChanges();
 
