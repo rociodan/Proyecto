@@ -14,7 +14,7 @@
         @using (Html.BeginForm())
         {
             <label>Titulo</label>
-            <input type="text" name="Title" value=" " placeholder="Ingrese el nombre del libro" class="form-control" />
+            <input type="text" name="Title" value=" " placeholder="Ingrese el nombre del libro" class="form-control" pattern="[A-Za-z0-9]{5,20}" title="Ingrese el titulo del libro, de 5 a 20 caracteres, admite letras y numeros"/>
             <label>Autor</label>
             <select name="autores" class="form-control">
                 <option>Seleccione un Autor...</option>

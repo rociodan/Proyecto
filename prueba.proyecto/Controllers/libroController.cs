@@ -61,8 +61,12 @@ namespace prueba.proyecto.Controllers
 
             Book libro = db.Book.Find(book.Id);
             libro.Title = book.Title;
-            Author author = db.Author.Find(autores.Id);
+
+            Author author = db.Author.Find(book.Id);
             author.AuthorName = autores.AuthorName;
+
+            Publisher publish = db.Publisher.Find(book.Id);
+            publish.TitlePublisher = publisher.TitlePublisher;
 
             
 
