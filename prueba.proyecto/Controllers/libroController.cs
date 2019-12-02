@@ -18,7 +18,7 @@ namespace prueba.proyecto.Controllers
 
 
         [HttpPost]
-        public ActionResult Agregar(Book book, IEnumerable<int> autores, IEnumerable<int> generos, Publisher publisher)
+        public ActionResult Agregar(Book book, IEnumerable<int> autores, IEnumerable<int> generos, IEnumerable<int> publisher)
         {
             AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
 
@@ -36,9 +36,15 @@ namespace prueba.proyecto.Controllers
                 book.Gender.Add(genero);                
             }
 
-            
-            book.Publisher.Add(publisher);
-            
+            foreach (int publisherActual in publisher)
+            {
+
+                Publisher publishers = db.Publisher.Find(publisherActual);
+                book.Publisher.Add(publishers);
+            }
+
+
+                        
 
             db.Book.Add(book);
             db.SaveChanges();
@@ -55,34 +61,25 @@ namespace prueba.proyecto.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar(Book book, Author autores, IEnumerable<int> generos, Publisher publisher)
+        public ActionResult Editar(Book book, IEnumerable<int> autores)
         {
             AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
 
             Book libro = db.Book.Find(book.Id);
             libro.Title = book.Title;
+            libro.Author.Clear();
 
-            Author author = db.Author.Find(book.Id);
-            author.AuthorName = autores.AuthorName;
-
-            Publisher publish = db.Publisher.Find(book.Id);
-            publish.TitlePublisher = publisher.TitlePublisher;
-
-            
-
-            libro.Gender.Clear();
-
-
-            foreach (int generoActual in generos)
+            foreach (int autorActual in autores)
             {
-                Gender escritoPor = db.Gender.Find(generoActual);
-                libro.Gender.Add(escritoPor);
+                Author escritoPor = db.Author.Find(autorActual);
+                libro.Author.Add(escritoPor);
             }
 
             db.SaveChanges();
 
             return Content("Libro editado satisfactoriamente");
         }
+
 
         public ActionResult Listar()
         {
@@ -125,5 +122,25 @@ namespace prueba.proyecto.Controllers
             return RedirectToAction("Listar");
 
         }
+
+
+        
+        public ActionResult Author()
+        {            
+            return View();
+        }
+
+         
+
+        [HttpPost]
+        public ActionResult Author(Author autores)
+        {
+            AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
+
+            db.Author.Add(autores);
+            db.SaveChanges();
+            return Content("Autor Agregado satisfactoriamente");
+        }
+
     }
 }

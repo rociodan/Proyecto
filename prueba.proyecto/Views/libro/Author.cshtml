@@ -1,0 +1,20 @@
+﻿@using prueba.proyecto.Models
+@{
+    ViewBag.Title = "Author";
+}
+
+@{
+    AccentureAcademyBookStoreEntities db = new AccentureAcademyBookStoreEntities();
+    List<Author> autores = db.Author.OrderBy(au => au.AuthorName).ToList();
+
+}
+<h2>Agregar Autor</h2>
+@using (Html.BeginForm())
+{
+    <input type="text" name="AuthorName" value=" " placeholder="Nuevo Autor" class="form-control" />
+
+    <button class="btn btn-primary form-control" style="margin-top:1em">
+        Agregar
+    </button>
+
+}
